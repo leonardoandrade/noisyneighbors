@@ -21,7 +21,7 @@ if __name__ == '__main__':
     now_formated = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
     os.system("sysbench --test=fileio --file-total-size=500M prepare")
-    os.system("sysbench --test=fileio --file-total-size=500M --file-test-mode=rndrw --init-rng=on --max-time=5 --max-requests=0 run |  sed -rn 's/.*\(([0-9.]+)Mb\/sec\).*/DISK "+now_formated+" \\1/p' >> "+stats_file)
+    os.system("sysbench --test=fileio --file-total-size=500M --file-test-mode=rndrw --init-rng=on --max-time=30 --max-requests=0 run |  sed -rn 's/.*\(([0-9.]+)Mb\/sec\).*/DISK "+now_formated+" \\1/p' >> "+stats_file)
     os.system("sysbench --test=fileio --file-total-size=500M cleanup")
 
         
